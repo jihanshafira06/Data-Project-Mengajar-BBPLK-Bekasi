@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
+    <?php
+        $Nama1 ="hana";
+        $Nama2 ="indria";
+        $Email1 ="hana@gmail.com";
+        $Email2 ="indria@gmail.com";
+        $Komentar1 ="hjdgfgjgfhgdfhgf";
+        $Komentar2 ="hfbdhfgvfjdbvdh";
+    ?>
+
     <div class= "container">
         <div class="row">
           <div class="container-fluid"></div>
@@ -46,37 +55,18 @@
                 <tbody>
                   <tr class="table-primary">
                     <th scope="row">1</th>
-                    <td>Dudung</td>
-                    <td>Dudung@gmail.com</td>
-                    <td>jgfdghfdjghjfghfjhgdhgj</td>
+                    <td><?php echo $Nama1;?></td>
+                    <td><?php echo $Email1;?></td>
+                    <td><?php echo $Komentar1;?></td>
                   </tr>
                   <tr class="table-primary">
                     <th scope="row">2</th>
-                    <td>Daniel</td>
-                    <td>Daniel@gmail.com</td>
-                    <td>fdjglkfjgkdhghgfjdghfjghjfdu</td>
-                  </tr>
-                  <tr class="table-primary">
-                    <th scope="row">3</th>
-                    <td>Ismiati</td>
-                    <td>ismi@gmail.com</td>
-                    <td>gdjhdfjkghjkghj</td>
-                  </tr>
-                  <tr class="table-primary">
-                    <th scope="row">4</th>
-                    <td>Angela</td>
-                    <td>Angela@gmail.co.id</td>
-                    <td>gljhkjgkfuhkndfghjghjfdh</td>
-                  </tr>
-                  <tr class="table-primary">
-                    <th scope="row">5</th>
-                    <td>Erik</td>
-                    <td>Erik@gmail.com</td>
-                    <td>jfdjkdsufgdbvfhjfdgvjdbv</td>
+                    <td><?php echo $Nama2;?></td>
+                    <td><?php echo $Email2;?></td>
+                    <td><?php echo $Komentar2;?></td>
                   </tr>
                 </tbody>
-              </table>
-              
+              </table>      
         </div>
         <div class="col-12 col-md-4 col-lg-2 bg-danger text-light">Banner</div>
         <div class="col-12 bg-info text-light">Footer</div>
