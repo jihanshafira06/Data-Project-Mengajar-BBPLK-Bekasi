@@ -15,13 +15,14 @@
     $JumlahBarang=$_POST['JumlahBarang'];
         echo "Jumlah : $JumlahBarang <br>";
     $totalharga=$HargaBarang*$JumlahBarang;
-        echo "TotalHarga : $totalharga <br>";
+    
         setcookie("totalharga",$totalharga);
     ?>
     <form action="Proses2form.php" method="post">
+    totalharga:     <input type="number" name="totalharga" min="0" style="width:300px" id="totalharga" value="<?=$totalharga;?>" readonly><hr>
     UangBayar:      <input type="number" name="UangBayar" min="0" style="width:300px" onchange="getkembali()"
-                    onkeyup="getkembali()" id="bayar" placeholder="masukan jumlah uang bayar" required ><hr>
-    UangKembali:    <input type="number" name="Uangkembali" min="0"  style="width:300px"><hr>
+                    onkeyup="getkembali()" id="bayar" required="" ><hr>
+    UangKembali:    <input type="number" name="Uangkembali" min="0"  style="width:300px"id="kembali" readonly><hr>
                     <input type="submit" value="Bayar" >
     </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

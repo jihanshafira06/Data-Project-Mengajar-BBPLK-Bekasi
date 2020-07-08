@@ -8,22 +8,21 @@
 </head>
 <body>
         <?php
-        // Memasukkan nilai ke dalam array
+        // Memasukan fungsi nilai kedalam array
         $mobil=array("Volvo","BMW","Toyota");
 
-        // Array diurutkan secara Ascending
-        sort($mobil);
+        // Array diurutkan secara Descending
+        rsort($mobil);
 
-        // mendapatkan jumlah nilai dari array $mobil
-        $lenght=count($mobil);
+        // Mendapatkan jumlah nilai dari array $mobil
+        $length=count($mobil);
 
         // Dengan looping menampilkan tiap nilai dari array
-        for($x=0; $X < $lenght; $x++){
+        for($x=0; $x < $length; $x++){
             echo $mobil[$x];
-            echo "</br>";
+            echo "<br/>";
         }
-
-
+        
         ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
