@@ -10,7 +10,7 @@
         <?php
         $totalharga = $_COOKIE['totalharga'];
         $UangBayar  = $_POST['UangBayar'];
-
+        
         if($totalharga>$UangBayar){
             echo "<script>alert('Maaf Uang Bayar anda Kurang')</script>";
             echo "<script>window.history.back()</script>";

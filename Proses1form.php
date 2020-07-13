@@ -15,15 +15,22 @@
     $JumlahBarang=$_POST['JumlahBarang'];
         echo "Jumlah : $JumlahBarang <br>";
     $totalharga=$HargaBarang*$JumlahBarang;
-    
         setcookie("totalharga",$totalharga);
+    if($JumlahBarang >=10){
+        $diskon=$totalharga*0.05;
+    }else{
+        $diskon=0;
+    }
+    $GrandTotal=$totalharga-$diskon;
     ?>
     <form action="Proses2form.php" method="post">
-    totalharga:     <input type="number" name="totalharga" min="0" style="width:300px" id="totalharga" value="<?=$totalharga;?>" readonly><hr>
-    UangBayar:      <input type="number" name="UangBayar" min="0" style="width:300px" onchange="getkembali()"
-                    onkeyup="getkembali()" id="bayar" required="" ><hr>
-    UangKembali:    <input type="number" name="Uangkembali" min="0"  style="width:300px"id="kembali" readonly><hr>
-                    <input type="submit" value="Bayar" >
+    Total Harga  :     <input type="number" name="totalharga" min="0" style="width:300px" id="totalharga" value="<?=$totalharga;?>" readonly><hr>
+    Diskon       :     <input type="number" name="diskon" min="0" style="width:300px" id="diskon" value="<?=$diskon;?>" readonly><hr>
+    Grand Total  :     <input type="number" name="Grand Total" min="0" style="width:300px" id="GrandTotal" value="<?=$GrandTotal;?>" readonly><hr>
+    Uang Bayar   :     <input type="number" name="UangBayar" min="0" style="width:300px" onchange="getkembali()"
+                       onkeyup="getkembali()" id="bayar" required="" ><hr>
+    Uang Kembali :     <input type="number" name="Uangkembali" min="0"  style="width:300px"id="kembali" readonly><hr>
+                       <input type="submit" value="Bayar" >
     </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -32,8 +39,9 @@
         function getkembali(){
             var totalharga = document.getElementById('totalharga').value
             var UangBayar = document.getElementById('bayar').value
+            var GrandTotal = document.getElementById('GrandTotal').value
 
-            var Uangkembali = UangBayar-totalharga
+            var Uangkembali = UangBayar-GrandTotal
             document.getElementById ('kembali').value =Uangkembali
             console.log(Uangkembali)
         }
