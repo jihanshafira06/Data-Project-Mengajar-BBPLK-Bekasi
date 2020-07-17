@@ -40,21 +40,21 @@
           </nav>
           
           <div class="col-12 col-md-8 col-lg-10 bg-light text-dark" style="min-height:650px" >
-            <div class="container-fluid text-center text-dark"><h2><b>INPUT DATA USER</b></h2>
-                <form action="prosesInsertUser.php" method="POST">
+            <div class="container-fluid text-center text-dark"><h2><b>INPUT FORM BARANG</b></h2>
+                <form action="prosesInsertBarang.php" method="POST">
                   <div class="form-group text-left">
-                    <label for="namaUser">Nama User:</label>
-                    <input type="text" class="form-control" name="namaUser" placeholder="user name"  style="width: 100%;" required>
+                    <label for="namaBarang">Nama Barang:</label>
+                    <input type="text" class="form-control" name="namaBarang" placeholder=" name "  style="width: 100%;" required>
                   </div>
                   <div class="form-group text-left">
-                    <label for="emaiUser">Email User:</label>
-                    <input type="email" class="form-control mr-sm-2" name="emailUser" placeholder="@" style="width: 100%;" required> 
+                    <label for="satuanBarang">Satuan Barang:</label>
+                    <input type="text" class="form-control mr-sm-2" name="satuanBarang" placeholder="satuan " style="width: 100%;" required> 
                   </div>
                   <div class="form-group text-left">
-                    <label for="passwordUser">Password User:</label>
-                    <input type="password" class="form-control mr-sm-2" name="passwordUser" placeholder="password" style="width: 100%;" required> 
+                    <label for="hargaBarang">Harga Barang:</label>
+                    <input type="number" class="form-control mr-sm-2" name="hargaBarang" placeholder="harga " style="width: 100%;" required> 
                   </div>
-                <button type="submit" class="btn btn-info mr-auto"style="width: 100%;">Submit</button>
+                <button type="submit" class="btn btn-info mr-auto"style="width: 100%;">Simpan</button>
               </form>  
               <br>
               <!-- Tabel data  -->
@@ -62,8 +62,9 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
+                            <th>Nama Barang</th>
+                            <th>Satuan Barang</th>
+                            <th>Harga Barang</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,10 +74,10 @@
                         if (isset ($_GET['q'])){
                             // yang dijalankan jika ada isinya
                             $q = $_GET['q'];
-                            $sql = "SELECT * FROM tb_users WHERE nama_user LIKE '%$q%'";
+                            $sql = "SELECT * FROM tb_barang WHERE nama_barang LIKE '%$q%'";
                         }else{
                             // jika $_GET['q'] tidak ada isinya
-                            $sql = "SELECT*FROM tb_users";
+                            $sql = "SELECT*FROM tb_barang";
                         }
                             $result = $conn->query($sql);
 
@@ -84,17 +85,18 @@
                                 // Akan dijalankan jika recordnya da
                             while($row = $result->fetch_assoc()){ ?>
                                 <tr>
-                                    <td><?=$row['id_user']?></td>
-                                    <td><?=$row['nama_user']?></td>
-                                    <td><?=$row['email_user']?></td>
+                                    <td><?=$row['id_barang']?></td>
+                                    <td><?=$row['nama_barang']?></td>
+                                    <td><?=$row['satuan_barang']?></td>
+                                    <td><?=$row['harga_barang']?></td>
                                     <td>
                                    
-                                        <a onclick="return-confirm('Anda yakin akan menghapus record ini ?')"class="btn btn-danger" href="prosesDeleteUser.php?id=<?=$row ['id_user']?>">
+                                        <a onclick="return-confirm('Anda yakin akan menghapus record ini ?')"class="btn btn-danger" href="prosesDeleteBarang.php?id=<?=$row ['id_barang']?>">
                                         Delete
                                         </a>
 
                                         
-                                        <a class="btn btn-primary" href="" onclick="showUpdateForm ('<?=$row['id_user']?>', '<?=$row['nama_user']?>', '<?=$row['email_user']?>') "data-toggle="modal" data-target="#exampleModal">Update
+                                        <a class="btn btn-primary" href="" onclick="showUpdateForm ('<?=$row['id_barang']?>', '<?=$row['nama_barang']?>', '<?=$row['satuan_barang']?>', '<?=$row['harga_barang']?>') "data-toggle="modal" data-target="#exampleModal">Update
                                          </a>
                                     </td>
                                 </tr>
@@ -121,24 +123,28 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Form UPDATE DATA USER</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Form UPDATE DATA BARANG</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-              <form action="prosesUpdateUser.php" method="POST">
+              <form action="prosesUpdateBarang.php" method="POST">
                   <div class="form-group text-left">
-                    <label for="idUser">id User:</label>
-                    <input type="text" class="form-control" name="idUser" id="modal-id-user" placeholder="id name"  style="width: 100%;" readonly>
+                    <label for="idBarang">id Barang:</label>
+                    <input type="text" class="form-control" name="idBarang" id="modal-id-barang" placeholder="id barang"  style="width: 100%;" readonly>
                   </div>
                   <div class="form-group text-left">
-                    <label for="namaUser">Nama User:</label>
-                    <input type="text" class="form-control" name="namaUser" id="modal-nama-user" placeholder="user name"  style="width: 100%;" required>
+                    <label for="namaBarang">Nama Barang:</label>
+                    <input type="text" class="form-control" name="namaBarang" id="modal-nama-barang" placeholder=" name barang"  style="width: 100%;" required>
                   </div>
                   <div class="form-group text-left">
-                    <label for="emaiUser">Email User:</label>
-                    <input type="email" class="form-control mr-sm-2" name="emailUser" id="modal-email-user" placeholder="@" style="width: 100%;" required> 
+                    <label for="satuanBarang">Satuan Barang:</label>
+                    <input type="text" class="form-control mr-sm-2" name="satuanBarang" id="modal-satuan-barang" placeholder="satuan barang" style="width: 100%;" required> 
+                  </div>
+                  <div class="form-group text-left">
+                    <label for="hargaBarang">Harga Barang:</label>
+                    <input type="number" class="form-control mr-sm-2" name="hargaBarang" id="modal-harga-barang" placeholder="harga barang" style="width: 100%;" required> 
                   </div>
                 <button type="submit" class="btn btn-info mr-auto"style="width: 100%;" value="Update">Update</button>
                 
@@ -156,11 +162,12 @@
 
     <script>                       
       // fungsi untuk menampilkan nilai pada from update -->
-      function showUpdateForm(id,nama,email){
+      function showUpdateForm(id,nama,satuan,harga){
         // document.getElemtById adalah cara pada js DOM untuk mengambil elemen pada hal -->
-        document.getElementById('modal-id-user').value = id;
-        document.getElementById('modal-nama-user').value = nama;
-        document.getElementById('modal-email-user').value = email;
+        document.getElementById('modal-id-barang').value = id;
+        document.getElementById('modal-nama-barang').value = nama;
+        document.getElementById('modal-satuan-barang').value = satuan;
+        document.getElementById('modal-harga-barang').value = harga;
       
       }
     </script>

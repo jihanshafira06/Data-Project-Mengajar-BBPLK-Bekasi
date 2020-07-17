@@ -84,9 +84,10 @@
                                 // Akan dijalankan jika recordnya da
                             while($row = $result->fetch_assoc()){ ?>
                                 <tr>
-                                    <td><?=$row['id_user']?></td>
-                                    <td><?=$row['nama_user']?></td>
-                                    <td><?=$row['email_user']?></td>
+                                    <td><?=$row['id_barang']?></td>
+                                    <td><?=$row['nama_barang']?></td>
+                                    <td><?=$row['satuan_barang']?></td>
+                                    <td><?=$row['harga_barang']?></td>
                                     <td>
                                    
                                         <a onclick="return-confirm('Anda yakin akan menghapus record ini ?')"class="btn btn-danger" href="prosesDeleteUser.php?id=<?=$row ['id_user']?>">
@@ -129,15 +130,15 @@
           <div class="modal-body">
               <form action="prosesUpdateUser.php" method="POST">
                   <div class="form-group text-left">
-                    <label for="idUser">id User:</label>
+                    <label for="idUser">id barang:</label>
                     <input type="text" class="form-control" name="idUser" id="modal-id-user" placeholder="id name"  style="width: 100%;" readonly>
                   </div>
                   <div class="form-group text-left">
-                    <label for="namaUser">Nama User:</label>
+                    <label for="namaUser">Nama barang:</label>
                     <input type="text" class="form-control" name="namaUser" id="modal-nama-user" placeholder="user name"  style="width: 100%;" required>
                   </div>
                   <div class="form-group text-left">
-                    <label for="emaiUser">Email User:</label>
+                    <label for="emaiUser">satuan barang:</label>
                     <input type="email" class="form-control mr-sm-2" name="emailUser" id="modal-email-user" placeholder="@" style="width: 100%;" required> 
                   </div>
                 <button type="submit" class="btn btn-info mr-auto"style="width: 100%;" value="Update">Update</button>
